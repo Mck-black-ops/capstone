@@ -20,8 +20,8 @@ Gem Runners is a fast-paced, local multiplayer platformer built in **Godot** whe
 ## 🧠 Team
 
 - **Andrew Lang** – Gameplay logic, scene design, UI development
-- **Tyler [Last Name]** – Character animation, movement design
-- **JP [Last Name]** – Art direction, effects, and level art
+- **Tyler Moon** – Character animation, movement design
+- **JP Vaeth** – Art direction, effects, and level art
 - **Advisor:** Dr. William Kreahling, CS 495/496 Capstone Project
 
 ## 🚀 Getting Started

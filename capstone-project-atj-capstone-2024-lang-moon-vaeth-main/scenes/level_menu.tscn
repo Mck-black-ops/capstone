@@ -1,0 +1,203 @@
+[gd_scene load_steps=5 format=3 uid="uid://co1a2sjod7dw5"]
+
+[ext_resource type="Script" path="res://scripts/level_menu.gd" id="1_wlq48"]
+[ext_resource type="Texture2D" uid="uid://b42k7x7h5w3fc" path="res://assets/background/PlayBackground1200 (2).jpg" id="2_047v3"]
+[ext_resource type="Texture2D" uid="uid://bieaigmbmrixu" path="res://assets/background/Buttons.png" id="4_mydi1"]
+[ext_resource type="FontFile" uid="uid://bmvw53x0yedhc" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="6_r7f7q"]
+
+[node name="LevelMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchor_right = 0.992
+anchor_bottom = 0.988
+offset_right = 2147.57
+offset_bottom = 772.288
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_wlq48")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -151.0
+offset_top = -10.0
+offset_right = 151.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_047v3")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer2"]
+offset_left = 37.0
+offset_top = 69.0
+offset_right = 1901.0
+offset_bottom = 1072.0
+theme_override_constants/h_separation = 350
+theme_override_constants/v_separation = 200
+columns = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer2/GridContainer"]
+layout_mode = 2
+
+[node name="Level1" type="Button" parent="CanvasLayer2/GridContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_colors/font_outline_color = Color(0.270588, 0.211765, 0.976471, 1)
+theme_override_fonts/font = ExtResource("6_r7f7q")
+theme_override_font_sizes/font_size = 60
+text = "LeveL 1"
+icon = ExtResource("4_mydi1")
+text_overrun_behavior = 1
+icon_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer2/GridContainer"]
+layout_mode = 2
+
+[node name="Level2" type="Button" parent="CanvasLayer2/GridContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_colors/font_outline_color = Color(0.270588, 0.211765, 0.976471, 1)
+theme_override_fonts/font = ExtResource("6_r7f7q")
+theme_override_font_sizes/font_size = 60
+text = "LeveL 2"
+icon = ExtResource("4_mydi1")
+text_overrun_behavior = 1
+icon_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer2/GridContainer"]
+layout_mode = 2
+
+[node name="Level3" type="Button" parent="CanvasLayer2/GridContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_colors/font_outline_color = Color(0.270588, 0.211765, 0.976471, 1)
+theme_override_fonts/font = ExtResource("6_r7f7q")
+theme_override_font_sizes/font_size = 60
+text = "LeveL 3"
+icon = ExtResource("4_mydi1")
+text_overrun_behavior = 1
+icon_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer2/GridContainer"]
+layout_mode = 2
+
+[node name="Level4" type="Button" parent="CanvasLayer2/GridContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_colors/font_outline_color = Color(0.270588, 0.211765, 0.976471, 1)
+theme_override_fonts/font = ExtResource("6_r7f7q")
+theme_override_font_sizes/font_size = 60
+text = "LeveL 4"
+icon = ExtResource("4_mydi1")
+text_overrun_behavior = 1
+icon_alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="CanvasLayer2/GridContainer"]
+layout_mode = 2
+
+[node name="Level5" type="Button" parent="CanvasLayer2/GridContainer/HBoxContainer5"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_colors/font_outline_color = Color(0.270588, 0.211765, 0.976471, 1)
+theme_override_fonts/font = ExtResource("6_r7f7q")
+theme_override_font_sizes/font_size = 60
+text = "LeveL 5"
+icon = ExtResource("4_mydi1")
+text_overrun_behavior = 1
+icon_alignment = 1
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="CanvasLayer2/GridContainer"]
+layout_mode = 2
+
+[node name="Level6" type="Button" parent="CanvasLayer2/GridContainer/HBoxContainer6"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_colors/font_outline_color = Color(0.270588, 0.211765, 0.976471, 1)
+theme_override_fonts/font = ExtResource("6_r7f7q")
+theme_override_font_sizes/font_size = 60
+text = "LeveL 6"
+icon = ExtResource("4_mydi1")
+text_overrun_behavior = 1
+icon_alignment = 1
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="CanvasLayer2/GridContainer"]
+layout_mode = 2
+
+[node name="Level7" type="Button" parent="CanvasLayer2/GridContainer/HBoxContainer7"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_colors/font_outline_color = Color(0.270588, 0.211765, 0.976471, 1)
+theme_override_fonts/font = ExtResource("6_r7f7q")
+theme_override_font_sizes/font_size = 60
+text = "LeveL 7"
+icon = ExtResource("4_mydi1")
+text_overrun_behavior = 1
+icon_alignment = 1
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="CanvasLayer2/GridContainer"]
+layout_mode = 2
+
+[node name="Level8" type="Button" parent="CanvasLayer2/GridContainer/HBoxContainer8"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_colors/font_outline_color = Color(0.270588, 0.211765, 0.976471, 1)
+theme_override_fonts/font = ExtResource("6_r7f7q")
+theme_override_font_sizes/font_size = 60
+text = "LeveL 8"
+icon = ExtResource("4_mydi1")
+text_overrun_behavior = 1
+icon_alignment = 1
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="CanvasLayer2/GridContainer"]
+layout_mode = 2
+
+[node name="Level9" type="Button" parent="CanvasLayer2/GridContainer/HBoxContainer9"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_colors/font_outline_color = Color(0.270588, 0.211765, 0.976471, 1)
+theme_override_fonts/font = ExtResource("6_r7f7q")
+theme_override_font_sizes/font_size = 60
+text = "LeveL 9
+"
+icon = ExtResource("4_mydi1")
+text_overrun_behavior = 1
+icon_alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 2170.0
+offset_top = 661.0
+offset_right = 2770.0
+offset_bottom = 775.0
+
+[node name="Label" type="Label" parent="HBoxContainer5"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_r7f7q")
+theme_override_font_sizes/font_size = 40
+text = "Race Against Your Friends 
+In Your Favorite Levels"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer2/GridContainer/HBoxContainer/Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="CanvasLayer2/GridContainer/HBoxContainer2/Level2" to="." method="_on_level_2_pressed"]

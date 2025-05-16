@@ -1,0 +1,151 @@
+[gd_scene load_steps=21 format=3 uid="uid://bgjuhykwe2aae"]
+
+[ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_8a2mj"]
+[ext_resource type="Texture2D" uid="uid://bp0b78ebwiceu" path="res://assets/background/MainMenu1200.jpg" id="2_gnfod"]
+[ext_resource type="Script" path="res://scripts/margin_container.gd" id="3_fgoll"]
+[ext_resource type="FontFile" uid="uid://bmvw53x0yedhc" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="3_l56hs"]
+[ext_resource type="Texture2D" uid="uid://tudfm46nvgq7" path="res://assets/sprites/play_button.png" id="6_7m4bq"]
+[ext_resource type="Texture2D" uid="uid://ctn3rjiynhq1e" path="res://assets/sprites/settings_button.png" id="7_si3ca"]
+[ext_resource type="Script" path="res://scripts/Title_Box.gd" id="8_lpeak"]
+[ext_resource type="Texture2D" uid="uid://mq82x7wx8yqt" path="res://assets/sprites/quit_button.png" id="9_ww2ev"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_obv1j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_77voj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_anig8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hmn2l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uwnne"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mr3kk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_edtx8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lccs3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_igdwj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kra0l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_voeco"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a654y"]
+
+[node name="StartMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2133.0
+offset_bottom = 760.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_8a2mj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = -151.0
+offset_right = 1984.0
+offset_bottom = 1200.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_gnfod")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_left = 47.0
+offset_top = 75.0
+offset_right = 896.0
+offset_bottom = 1424.0
+script = ExtResource("3_fgoll")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+z_index = -3
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/MarginContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.764052, 0, 1)
+theme_override_fonts/font = ExtResource("3_l56hs")
+theme_override_font_sizes/font_size = 100
+text = "  Gem
+     Runners"
+script = ExtResource("8_lpeak")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+z_index = 1000
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_colors/font_outline_color = Color(0.270588, 0.211765, 0.976471, 1)
+theme_override_colors/icon_hover_color = Color(0.541176, 0, 0.643137, 1)
+theme_override_fonts/font = ExtResource("3_l56hs")
+theme_override_font_sizes/font_size = 200
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_obv1j")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_77voj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_anig8")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hmn2l")
+icon = ExtResource("6_7m4bq")
+alignment = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_colors/font_outline_color = Color(0.270588, 0.211765, 0.976471, 1)
+theme_override_colors/icon_hover_color = Color(0.4, 0.294118, 0.0823529, 1)
+theme_override_fonts/font = ExtResource("3_l56hs")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_uwnne")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_mr3kk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_edtx8")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lccs3")
+icon = ExtResource("7_si3ca")
+alignment = 0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.188969, 0.188969, 0.188969, 1)
+theme_override_colors/font_outline_color = Color(0.269526, 0.211241, 0.977079, 1)
+theme_override_colors/icon_hover_color = Color(0.364706, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_l56hs")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_igdwj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_kra0l")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_voeco")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_a654y")
+icon = ExtResource("9_ww2ev")
+alignment = 0
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/Exit" to="." method="_on_exit_pressed"]

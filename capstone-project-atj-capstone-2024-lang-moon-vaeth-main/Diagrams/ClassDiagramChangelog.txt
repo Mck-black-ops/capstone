@@ -1,0 +1,32 @@
+Renamed Classes:
+	-Main was renamed to Game to better reflect its purpose
+	-World was renamed to Level to better reflect its purpose
+New Classes:
+	-CanvasLayer added as new base class
+	-Inventory
+	-Warrior, Rogue, Mage, Archer (placeholder class types)
+	-PlayerUI is an individual UI for each player, reflecting
+	future multiplayer capability
+	-Collectible and Powerup
+	-Texture
+	-InputGUI consolidates all menu management into one class
+	-PhysicsProperties is a potential name for a class that
+	could hold complex physics values if multiple classes
+	will need to calculate/hold them. We may end up just
+	delegating these properties out to the individual classes
+	that require them
+	-Hazard
+	-AudioManager
+	-SaveSystem
+Modified Classes:
+	-Player has been made more robust, and now has a levelling
+	system, inventory, and possible Class Types
+	-Enemy has been expanded, now implementing physics and potential
+	'AI' or tracking mechanisms (not sure how this will work yet).
+	-Game has possible 4 players now, and manages the InputGUI and
+	the textures, as well as now having a save system
+	-World is now Level, which contains all the things a level of
+	our game will need to have.
+
+Notes were added to classes that required extra description.
+	

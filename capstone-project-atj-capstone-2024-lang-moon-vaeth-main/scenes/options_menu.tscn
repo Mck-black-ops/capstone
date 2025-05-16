@@ -1,0 +1,91 @@
+[gd_scene load_steps=8 format=3 uid="uid://cx61ok34pw6bq"]
+
+[ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_g2vu7"]
+[ext_resource type="Texture2D" uid="uid://b3rr37wd31vv4" path="res://assets/background/MainMenuBackground_.png" id="2_554v8"]
+[ext_resource type="Script" path="res://scripts/margin_container.gd" id="3_kqpbu"]
+[ext_resource type="FontFile" uid="uid://bmvw53x0yedhc" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="4_80aw4"]
+[ext_resource type="Script" path="res://scripts/play.gd" id="5_f2ujv"]
+[ext_resource type="Script" path="res://scripts/settings.gd" id="6_hrry3"]
+[ext_resource type="Script" path="res://scripts/exit.gd" id="7_lkatm"]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2133.0
+offset_bottom = 760.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_g2vu7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 1821.0
+offset_bottom = 1024.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_554v8")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_left = 47.0
+offset_top = -176.0
+offset_right = 896.0
+offset_bottom = 853.0
+script = ExtResource("3_kqpbu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+z_index = 1000
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_colors/font_outline_color = Color(0.270588, 0.211765, 0.976471, 1)
+theme_override_fonts/font = ExtResource("4_80aw4")
+theme_override_font_sizes/font_size = 200
+text = "Play		  >"
+alignment = 0
+script = ExtResource("5_f2ujv")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_colors/font_outline_color = Color(0.270588, 0.211765, 0.976471, 1)
+theme_override_fonts/font = ExtResource("4_80aw4")
+theme_override_font_sizes/font_size = 60
+text = "Settings  >"
+alignment = 0
+script = ExtResource("6_hrry3")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.188969, 0.188969, 0.188969, 1)
+theme_override_colors/font_outline_color = Color(0.269526, 0.211241, 0.977079, 1)
+theme_override_fonts/font = ExtResource("4_80aw4")
+theme_override_font_sizes/font_size = 60
+text = "Quit	      >"
+alignment = 0
+script = ExtResource("7_lkatm")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/Exit" to="." method="_on_exit_pressed"]

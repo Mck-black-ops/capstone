@@ -1,0 +1,173 @@
+[gd_scene load_steps=13 format=3 uid="uid://dkrwsvj5xf7y3"]
+
+[ext_resource type="Script" path="res://scripts/play_menu.gd" id="1_3407j"]
+[ext_resource type="Texture2D" uid="uid://b42k7x7h5w3fc" path="res://assets/background/PlayBackground1200 (2).jpg" id="2_s34yl"]
+[ext_resource type="Script" path="res://scripts/story_mode.gd" id="3_bj7t6"]
+[ext_resource type="Texture2D" uid="uid://bvc6174bgv8ej" path="res://assets/background/playMenuButton1.jpg" id="4_kcwhi"]
+[ext_resource type="Texture2D" uid="uid://blhadf7sx2und" path="res://assets/background/playMenuButton2.jpg" id="5_xd2ys"]
+[ext_resource type="FontFile" uid="uid://bmvw53x0yedhc" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="6_vkicc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x6mtt"]
+bg_color = Color(0.972549, 0.6, 0.6, 0.247059)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7tbk6"]
+bg_color = Color(0.913725, 0.913725, 0.113725, 0.211765)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmk1g"]
+bg_color = Color(0.996078, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hemdo"]
+bg_color = Color(0.972549, 0.6, 0.6, 0.247059)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvv0j"]
+bg_color = Color(0.913725, 0.913725, 0.113725, 0.211765)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pahi7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="PlayMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchor_right = 0.992
+anchor_bottom = 0.988
+offset_right = 2147.57
+offset_bottom = 772.288
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_3407j")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -151.0
+offset_top = -10.0
+offset_right = 151.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_s34yl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 297.0
+offset_right = 816.0
+offset_bottom = 1050.0
+
+[node name="StoryMode" type="Button" parent="HBoxContainer"]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/icon_normal_color = Color(0.964706, 0, 0, 1)
+theme_override_styles/hover = SubResource("StyleBoxFlat_x6mtt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7tbk6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dmk1g")
+script = ExtResource("3_bj7t6")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/StoryMode"]
+z_index = -1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_kcwhi")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer2"]
+layout_direction = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -832.0
+offset_top = -303.0
+offset_right = -317.0
+offset_bottom = 449.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="TimeTrials" type="Button" parent="CanvasLayer2/HBoxContainer2"]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/hover = SubResource("StyleBoxFlat_hemdo")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mvv0j")
+theme_override_styles/normal = SubResource("StyleBoxFlat_pahi7")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer2/HBoxContainer2/TimeTrials"]
+z_index = -1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_xd2ys")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 311.0
+offset_top = 85.0
+offset_right = 791.0
+offset_bottom = 157.0
+
+[node name="Label" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_vkicc")
+theme_override_font_sizes/font_size = 80
+text = "STORY MODE"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 301.0
+offset_top = 172.0
+offset_right = 1777.0
+offset_bottom = 247.0
+
+[node name="Label2" type="Label" parent="HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("6_vkicc")
+theme_override_font_sizes/font_size = 40
+text = "Steal Artifacts, Make 
+Money, And Level Up"
+horizontal_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 1073.0
+offset_top = 85.0
+offset_right = 1601.0
+offset_bottom = 157.0
+
+[node name="Label" type="Label" parent="HBoxContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_vkicc")
+theme_override_font_sizes/font_size = 80
+text = "Time Trials"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 1043.0
+offset_top = 153.0
+offset_right = 1643.0
+offset_bottom = 267.0
+
+[node name="Label" type="Label" parent="HBoxContainer5"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_vkicc")
+theme_override_font_sizes/font_size = 40
+text = "Race Against Your Friends 
+In Your Favorite Levels"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="HBoxContainer/StoryMode" to="." method="_on_story_mode_pressed"]
+[connection signal="pressed" from="CanvasLayer2/HBoxContainer2/TimeTrials" to="." method="_on_time_trials_pressed"]

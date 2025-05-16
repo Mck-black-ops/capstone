@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dl0jcdypy7oi6"]
+
+[ext_resource type="Script" path="res://scripts/moving_platform.gd" id="1_30dym"]
+[ext_resource type="Texture2D" uid="uid://cca7srey0u00f" path="res://assets/sprites/platforms.png" id="2_sthji"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tp2pr"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wwb3i"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_mask = 5
+script = ExtResource("1_30dym")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_sthji")
+region_enabled = true
+region_rect = Rect2(16, 32, 32, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("WorldBoundaryShape2D_tp2pr")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("WorldBoundaryShape2D_wwb3i")

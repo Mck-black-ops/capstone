@@ -1,0 +1,301 @@
+@startuml
+!theme aws-orange
+
+class KinematicBody2D
+note right of KinematicBody2D
+    Used for physics-based objects 
+    that can move and respond 
+    to forces, typically controlled 
+    by code (e.g., players, enemies).
+end note
+
+class StaticBody2D
+note right of StaticBody2D
+    Used for stationary physics 
+    objects that do not move, 
+    often terrain or obstacles.
+end note
+
+class Node2D
+note right of Node2D
+    A generic node for 2D 
+    positioning and transformation, 
+    forming the base for most 2D objects.
+end note
+
+class Control
+note right of Control
+    A UI-focused node for creating and 
+    managing user interface elements 
+    like buttons, labels, and progress bars.
+end note
+
+class CanvasLayer
+note right of CanvasLayer
+    A node used to manage layers in 
+    a 2D scene, often utilized for 
+    creating independent layers that 
+    stay fixed in place.
+end note
+
+note as N1
+    Important Information
+    -Note that this diagram is not representative of our current implementation, 
+    instead outlining a plan for the future of our project. This diagram is
+    subject to change.
+    -Since our game will be physics based, we anticipate utilizing a class such as
+    PhysicsProperties to handle complex physics calculations. This class may end
+    up being unneccesary and its function would instead be delegated to individual 
+    classes that require physics calculations.
+end note
+
+class Player {
+    - Speed : float
+    - JumpSpeed : float
+    - DashSpeed : float
+    - Health : int
+    - HealthBar : ProgressBar
+    - Inventory : Inventory
+    - Physics : PhysicsProperties
+    - Level : LevelSystem
+    --
+    + Move()
+    + Jump()
+    + Dash()
+    + TakeDamage()
+    + Die()
+    + UpdateHealthBar()
+    + CollectItem(item : Collectible)
+}
+
+Player --|> KinematicBody2D
+
+class LevelSystem {
+    - CurrentLevel : int
+    - Experience : int
+    - NextLevelXP : int
+    --
+    + GainXP(amount : int)
+    + LevelUp()
+    + UpgradeSkill(skill : String)
+}
+
+class Inventory {
+    - Items : Collectible[*]
+    --
+    + AddItem(item : Collectible)
+    + RemoveItem(item : Collectible)
+    + UseItem(item : Collectible)
+}
+
+class Warrior {
+    - SpecialPower
+    --
+    + SpecialPower()
+}
+class Rogue {
+    - SpecialPower
+    --
+    + SpecialPower()
+}
+
+class Mage {
+    - SpecialPower
+    --
+    + SpecialPower()
+}
+
+class Archer {
+    - SpecialPower
+    --
+    + SpecialPower()
+}
+
+Warrior --|> Player
+Rogue --|> Player
+Mage --|> Player
+Archer --|> Player
+
+class Enemy {
+    - Speed : float
+    - Health : int
+    - AttackPower : int
+    - Physics : PhysicsProperties
+    - TrackingType : String "FollowPlayer" | "FollowPath"
+    - Path : Path2D
+    --
+    + Move()
+    + Attack()
+    + TakeDamage()
+    + Die()
+    + TrackPlayer()
+    + FollowPath()
+}
+
+note right of Enemy
+    The 'TrackingType' attribute serves as
+    a placeholder. We are not yet sure how
+    enemy AI will be implemented, but plan
+    for enemies to be able to follow the
+    player or a set path at minimum
+end note
+
+
+Enemy --|> KinematicBody2D
+
+class Platform {
+    - Position : Vector2
+    - Type : String
+    - Physics : PhysicsProperties
+    --
+    + Move() ' For moving platforms
+}
+
+Platform --|> StaticBody2D
+
+class Level {
+    - Background : Texture
+    - Music : AudioStream
+    - Gravity : float
+    - Enemies : Enemy[*]
+    - Platforms : Platform[*]
+    - Hazards : Hazard[*]
+    - Collectibles : Collectible[*]
+}
+
+note right of Level
+    Defines the game environment, 
+    including background, music, gravity, 
+    and collections of Enemies, Platforms, 
+    Hazards, and Collectibles.
+end note
+
+Level --|> Node2D
+
+class UI {
+    - PlayerUIs : PlayerUI[1..4]
+    - Timer : Label
+    --
+    + UpdateHealth(playerID : int)
+    + UpdateScore(playerID : int)
+    + UpdateTimer()
+}
+
+UI --|> Control
+UI "1" *-- "4" PlayerUI : contains
+
+class PlayerUI {
+    - Icon : Texture
+    - HealthBar : ProgressBar
+    - PlayerName : Label
+    - Score : Label
+    --
+    + UpdateHealth()
+    + UpdateScore()
+}
+
+Player "1" ..> "1" PlayerUI : displays
+
+class Collectible {
+    - Type : String
+    - Value : int
+    - Position : Vector2
+    --
+    + Collect()
+}
+
+class PowerUp {
+    + ApplyEffect(target : PhysicsProperties)
+}
+
+PowerUp --|> Collectible
+
+class Texture {
+    - SpriteTexture : Texture
+    --
+    + LoadTexture()
+}
+
+Texture --|> Node2D
+
+class InputGUI {
+    - InputMapping : Control
+    - SettingsMenu : Control
+    - PauseMenu : Control
+    --
+    + ShowPauseMenu()
+    + ShowInputMapping()
+    + ShowSettingsMenu()
+}
+
+InputGUI --|> CanvasLayer
+
+class Game {
+    - CurrentLevel : Level
+    - Players : Player[*]
+    - Textures : Texture[*]
+    --
+    + StartGame()
+    + GameOver()
+    + PauseGame()
+}
+
+Game --|> Node2D
+
+class PhysicsProperties {
+    - Friction : float
+    - Weight : float
+    - Momentum : Vector2
+    --
+    + ApplyForce(force : Vector2)
+    + ApplyFriction()
+}
+
+class Hazard {
+    - Damage : int
+    --
+    + Trigger()
+}
+
+Hazard --|> StaticBody2D
+
+class AudioManager {
+    - BackgroundMusic : AudioStream
+    - SoundEffects : AudioStream[*]
+    --
+    + PlaySound(name : String)
+    + StopSound(name : String)
+    + AdjustVolume(level : float)
+}
+
+class SaveSystem{
+    - CurrentState : String
+    --
+    + SaveProgress()
+    + LoadProgress()
+}
+
+
+' Relationships
+Enemy "1" *-- "1" PhysicsProperties : has
+Enemy "many" ..> "1" Player : attacks
+Platform "1" *-- "1" PhysicsProperties : has
+PowerUp "many" ..> "1" PhysicsProperties : affects
+Level "1" *-- "many" Enemy : contains
+Level "1" *-- "many" Platform : contains
+Level "1" *-- "many" Hazard : contains
+Level "1" *-- "many" Collectible : spawns
+Player "1" ..> "1" UI : updates
+Player "1" ..> "1" Level : interacts with
+Player "1" *-- "1" Inventory : has
+Player "1" *-- "1" LevelSystem : has
+Player "1" *-- "1" PhysicsProperties : has
+Inventory "1" *-- "many" Collectible : contains
+Game "1" *-- "1" Level : manages
+Game "1" *-- "many" Player : contains
+Game "1" *-- "many" Texture : manages textures
+Game "1" *-- "1" UI : has
+Game "1" *-- "1" InputGUI : manages
+Game "1"*-- "1" AudioManager : has
+Game "1"*-- "1" SaveSystem: has
+@enduml

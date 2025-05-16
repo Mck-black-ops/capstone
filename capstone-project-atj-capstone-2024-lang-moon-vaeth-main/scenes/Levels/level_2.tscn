@@ -1,0 +1,98 @@
+[gd_scene load_steps=10 format=3 uid="uid://bfo0p3cok6qhe"]
+
+[ext_resource type="Texture2D" uid="uid://cmsdbr5tdgmao" path="res://assets/background/Super Mountain Dusk Files/Assets/version A/Layers/sky.png" id="1_vpg0o"]
+[ext_resource type="Script" path="res://scripts/CloudScript.gd" id="2_d6enr"]
+[ext_resource type="Texture2D" uid="uid://ckutigcaw53lf" path="res://assets/background/Super Mountain Dusk Files/Assets/version A/Layers/near-clouds.png" id="3_p263g"]
+[ext_resource type="Texture2D" uid="uid://dvmnagxu1i3xv" path="res://assets/background/Super Mountain Dusk Files/Assets/version A/Layers/far-mountains.png" id="4_7p1e2"]
+[ext_resource type="Texture2D" uid="uid://blgm50bgarry3" path="res://assets/background/Super Mountain Dusk Files/Assets/version A/Layers/mountains.png" id="5_fau24"]
+[ext_resource type="Texture2D" uid="uid://d2qm4jf1n0bd6" path="res://assets/background/Super Mountain Dusk Files/Assets/version B/Layers/myst.png" id="6_b8yhr"]
+[ext_resource type="PackedScene" path="res://scenes/player_knight.tscn" id="7_o2omb"]
+[ext_resource type="PackedScene" uid="uid://dl0jcdypy7oi6" path="res://scenes/moving_platform.tscn" id="8_x8c21"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d07jn"]
+
+[node name="Level1" type="Node2D"]
+position = Vector2(718, 1063)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(162, 197)
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(674, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(176, 48.3333)
+scale = Vector2(2.10694, 2.10694)
+texture = ExtResource("1_vpg0o")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(162, 197)
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(676, 0)
+script = ExtResource("2_d6enr")
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(223.333, 127)
+scale = Vector2(5.49479, 5.49479)
+texture = ExtResource("3_p263g")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(162, 197)
+motion_scale = Vector2(0.15, 0.15)
+motion_mirroring = Vector2(886, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(281.333, 17)
+scale = Vector2(5.54063, 5.54063)
+texture = ExtResource("4_7p1e2")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(162, 197)
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(837, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(257.222, 19.75)
+scale = Vector2(2.61875, 2.61875)
+texture = ExtResource("5_fau24")
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+layer = 1
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2"]
+position = Vector2(154, 376)
+motion_scale = Vector2(2, 0)
+motion_mirroring = Vector2(897, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer"]
+position = Vector2(274.333, -203.667)
+scale = Vector2(2.80556, 2.35278)
+texture = ExtResource("6_b8yhr")
+
+[node name="LeftBound" type="CharacterBody2D" parent="."]
+position = Vector2(-765, -17)
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftBound"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBound"]
+position = Vector2(48, -23)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_d07jn")
+
+[node name="Player2" parent="." instance=ExtResource("7_o2omb")]
+position = Vector2(159, -80)
+collision_mask = 7
+
+[node name="Camera2D" type="Camera2D" parent="Player2"]
+position = Vector2(185, -442)
+limit_left = 0
+limit_top = 0
+limit_bottom = 1050
+
+[node name="CharacterBody2D3" parent="." instance=ExtResource("8_x8c21")]
+position = Vector2(143, -48)

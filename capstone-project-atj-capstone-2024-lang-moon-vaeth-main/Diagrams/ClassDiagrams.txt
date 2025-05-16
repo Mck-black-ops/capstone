@@ -1,0 +1,106 @@
+@startuml
+!theme aws-orange
+
+' Base Godot classes for context
+class KinematicBody2D
+class StaticBody2D
+class Node2D
+class Control
+
+' Player class
+class Player {
+    - Speed : float
+    - Health : int
+    - JumpPower : float
+    - AttackPower : int
+    --
+    + Move()
+    + Jump()
+    + Attack()
+    + TakeDamage()
+}
+
+Player --|> KinematicBody2D
+
+' Enemy class
+class Enemy {
+    - Speed : float
+    - Health : int
+    - AttackPower : int
+    --
+    + Move()
+    + Attack()
+    + TakeDamage()
+}
+
+Enemy --|> KinematicBody2D
+
+' Platform class
+class Platform {
+    - Position : Vector2
+    - Type : String
+    --
+    + Move() ' For moving platforms
+}
+
+Platform --|> StaticBody2D
+
+' World class
+class World {
+    - Background : Texture
+    - Music : AudioStream
+    - Gravity : float
+    --
+    + LoadLevel()
+    + ScrollBackground()
+}
+
+World --|> Node2D
+
+' UI class
+class UI {
+    - HealthBar : ProgressBar
+    - ScoreText : Label
+    --
+    + UpdateHealth()
+    + UpdateScore()
+}
+
+UI --|> Control
+
+' Level class
+class Level {
+    - CurrentStage : int
+    - Enemies : Enemy[*]
+    - Platforms : Platform[*]
+    --
+    + LoadEnemies()
+    + LoadPlatforms()
+}
+
+Level --|> Node2D
+
+' Main Game class
+class Main {
+    - CurrentWorld : World
+    - Player : Player
+    --
+    + StartGame()
+    + GameOver()
+    + PauseGame()
+}
+
+Main --|> Node2D
+
+' Relationships
+Level "1" *-- "many" Enemy : contains
+Level "1" *-- "many" Platform : contains
+World "1" *-- "1" Level : manages
+World "1" o-- "1" UI : has
+Player "1" ..> "1" UI : updates
+Player "1" ..> "1" World : interacts with
+Enemy "many" ..> "1" Player : attacks
+Main "1" *-- "1" World : manages
+Main "1" *-- "1" Player : contains
+Main "1" *-- "1" UI : has
+@enduml
